@@ -25,8 +25,5 @@ class HttpRequest
 
     protected function bootstrap() {
         $this->ch = curl_init();
-        var_dump(curl_escape($this->ch, 'http://hahaha/阿斯蒂芬'));
     }
 }
-
-new HttpRequest('asdf');
