@@ -2,12 +2,8 @@
 
 include 'bootstrap.php';
 
-// $hr = new HttpRequester('http://www.163.com');
-$hr = new HttpRequester('https://www.baidu.com');
-// $hr = new HttpRequester('test.com/test1.php');
+$config = include 'config.php';
 
-$response = $hr->doGetRequest();
+$dsn = $config['db']['driver'] . ':' . __DIR__ . $config['db']['filepath'];
 
-// var_dump($response);
-$le = new LinkExtractor($response);
-$le->extractLinks();
+$dao = new Dao($dsn);

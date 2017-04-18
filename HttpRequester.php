@@ -31,9 +31,19 @@ class HttpRequester
 
     public function test()
     {
-        return curl_getinfo($this->ch);
+        var_dump(curl_getinfo($this->ch));
     }
     
+    public function setUpHeaders(array $params = array())
+    {
+        $httpheader = array(
+            'Connection:keep-alive',
+            'User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
+        );
+
+        $this->opts[CURLOPT_HTTPHEADER] = array_merge($httpheader, $params);
+    }
+
     protected function bootstrap()
     {
         $this->ch = curl_init($this->url);
@@ -44,13 +54,23 @@ class HttpRequester
         $this->opts[CURLOPT_RETURNTRANSFER] = true;
         $this->opts[CURLOPT_CONNECTTIMEOUT] = 10;
 
+        $this->opts[CURLOPT_SSL_VERIFYPEER] = false;
+
         curl_setopt_array($this->ch, $this->opts);
     }
 
-    protected function setUpHeaders()
+    protected function handleSSL()
     {
-        $this->opts[CURLOPT_HTTPHEADER] = array(
-            'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
-        );
+    }
+
+    protected function getScheme()
+    {
+        $scheme = strstr($test, '://', true);
+
+        if ($scheme === false) {
+            // $scheme = 
+        }
+
+        $this->scheme = $scheme;
     }
 }

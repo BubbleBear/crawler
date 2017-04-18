@@ -11,21 +11,25 @@ class LinkExtractor
         $this->context = $context;
     }
 
-    public function writeToFile($path = 'tmp')
+    public function writeToFile($path = '/documents/tmp.txt')
     {
         file_put_contents($path, $this->context);
     }
 
     public function extractLinks()
     {
-        $pattern = '/[a-z]+:\/\/(\w+\.)+\w+(\/(\w|\.)+)*/';
+        $pattern = '/"[a-z]+:\/\/[\w\.\/]+"/';
 
         $tmp = array();
 
         preg_match_all($pattern, $this->context, $tmp);
 
-        $this->links = $tmp[0];
+        $links = $tmp[0];
 
-        var_dump($this->links);
+        foreach ($links as $k => $v) {
+            $links[$k] = trim($v, '"');
+        }
+
+        $this->links = $links;
     }
 }
