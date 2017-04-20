@@ -2,12 +2,6 @@
 
 include 'vendor/autoload.php';
 
-use Vatel\HttpRequester;
-use Vatel\LinkExtractor;
-use Vatel\Kernel;
-use Vatel\DBConnection;
-use Vatel\ConfigHandler;
-
 $c = new Pimple\Container();
 $c['config'] = include 'config.php';
 $c['root'] = __DIR__;
