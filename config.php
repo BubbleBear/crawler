@@ -3,7 +3,7 @@
 return array(
     'db' => array(
         'driver' => 'sqlite',
-        'filepath' => '/data/url.db',
+        'filepath' => 'data/crawler.sqlite',
         'name' => 'url',
     )
 );

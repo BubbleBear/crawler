@@ -1,14 +1,19 @@
 <?php
 
+namespace Vatel;
+
 class ConfigHandler
 {
+    private $root;
+
     private $config;
 
     private $DBConfig;
 
-    public function __construct($config)
+    public function __construct($container)
     {
-        $this->config = $config;
+        $this->root = $container['root'];
+        $this->config = $container['config'];
         $this->boot();
     }
 
@@ -19,7 +24,7 @@ class ConfigHandler
         $dsn = $driver . ':';
 
         if ($driver == 'sqlite') {
-            $dsn .= $this->DBConfig['filepath'];
+            $dsn .= $this->root . '/' . $this->DBConfig['filepath'];
         } else {
             throw new \Exception('driver ' . $driver . ' not supported.');
         }

@@ -1,0 +1,11 @@
+{
+    "name": "crawler",
+    "require": {
+        "pimple/pimple": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vatel\\": "src/"
+        }
+    }
+}
