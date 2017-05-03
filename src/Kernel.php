@@ -17,16 +17,16 @@ class Kernel
     {
         $this->queue = array_merge($this->queue, $seeds);
 
-        while ($target = array_shift($this->queue)) {
-            $document = $this->container['HttpRequester']->doGetRequest($target);
+        while ($url = array_shift($this->queue)) {
+            $document = $this->container['HttpRequester']->doGetRequest($url);
 
             if (empty($document)) {
-                var_dump($target);
+                var_dump($url);
                 continue;
             }
 
-            file_put_contents('documents/' . md5($target), $document);
-            $links = $this->container['LinkExtractor']->extractLinks($target, $document);
+            file_put_contents('documents/' . md5($url), $document);
+            $links = $this->container['LinkExtractor']->extractLinks($url, $document);
             foreach ($links as $link) {
                 array_push($this->queue, $link);
             }

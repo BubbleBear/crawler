@@ -8,11 +8,6 @@ class LinkExtractor
 
     private $links = array();
 
-    public function writeToFile($path = '/documents/tmp.txt')
-    {
-        file_put_contents($path, $this->context);
-    }
-
     public function extractLinks($url, $context)
     {
         $this->context = $context;

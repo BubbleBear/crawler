@@ -21,7 +21,6 @@ class HttpRequester
     {
         curl_setopt($this->ch, CURLOPT_URL, $url);
         $res = curl_exec($this->ch);
-        file_put_contents('documents/tmp', $res);
         return $res;
     }
     
@@ -53,13 +52,19 @@ class HttpRequester
         $this->opts[CURLOPT_FOLLOWLOCATION] = true;
         $this->opts[CURLOPT_AUTOREFERER] = true;
 
+        // kill slow http connections
+        $this->opts[CURLOPT_LOW_SPEED_LIMIT] = 10 * 1024;
+        $this->opts[CURLOPT_LOW_SPEED_TIME] = 5;
+
         curl_setopt_array($this->ch, $this->opts);
     }
 
+    // todo
     protected function handleSSL()
     {
     }
 
+    // todo
     protected function getScheme()
     {
         $scheme = strstr($test, '://', true);

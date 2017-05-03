@@ -2,4 +2,4 @@
 
 $c = include 'bootstrap.php';
 
-$c['Kernel']->crawl(array('edusoho.com'));
+$c['Kernel']->crawl(array('baidu.com'));

@@ -8,15 +8,15 @@ $c['root'] = __DIR__;
 
 @dir('documents') or mkdir('documents');
 
-$classes = scandir('src');
+$classNames = scandir('src');
 
-foreach ($classes as $class) {
-    if ($p = strpos($class, '.php')) {
-        $class = substr($class, 0, $p);
+foreach ($classNames as $className) {
+    if ($p = strpos($className, '.php')) {
+        $className = substr($className, 0, $p);
     }
-    $c[$class] = function ($c) use ($class) {
-        $class = 'Vatel\\' . $class;
-        return new $class($c);
+    $c[$className] = function ($c) use ($className) {
+        $className = 'Vatel\\' . $className;
+        return new $className($c);
     };
 }
 
