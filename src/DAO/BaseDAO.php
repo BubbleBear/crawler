@@ -35,7 +35,7 @@ abstract class BaseDAO
         return $this->conn->exec($sql, array_merge(array_values($fields), array_values($conditions)))->rowCount();
     }
 
-    public function findEquals($fields = array(), $conditions = array())
+    public function findEquals($conditions = array(), $fields = array())
     {
         $sql = 'SELECT ' . (empty($fields) ? '*' : implode(', ', $fields)) . ' FROM ' . $this->table . (empty($conditions) ? '' : ' WHERE '
             . implode(' = ? AND ', array_keys($conditions)) . ' = ?');

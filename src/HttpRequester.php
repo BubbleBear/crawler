@@ -17,7 +17,7 @@ class HttpRequester
         $this->boot();
     }
 
-    public function doGetRequest($url)
+    public function doGetRequest($url, $referer = '')
     {
         curl_setopt($this->ch, CURLOPT_URL, $url);
         $res = curl_exec($this->ch);

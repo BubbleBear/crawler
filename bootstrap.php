@@ -15,7 +15,7 @@ foreach ($classNames as $className) {
         $className = substr($className, 0, $p);
     }
     $c[$className] = function ($c) use ($className) {
-        $className = 'Vatel\\' . $className;
+        $className = '\Vatel\\' . $className;
         return new $className($c);
     };
 }

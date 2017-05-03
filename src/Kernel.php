@@ -15,21 +15,51 @@ class Kernel
 
     public function crawl(array $seeds)
     {
-        $this->queue = array_merge($this->queue, $seeds);
+        $this->batchEnque($seeds);
 
-        while ($url = array_shift($this->queue)) {
+        while ($url = $this->deque()) {
             $document = $this->container['HttpRequester']->doGetRequest($url);
 
-            if (empty($document)) {
-                var_dump($url);
-                continue;
+            if (!empty($document)) {
+                $documentName = md5($url);
+                if ($this->container['UrlMapSetDAO']->update(
+                    array(
+                        'document_name' => $documentName,
+                        'update_time' => time(),
+                    ),
+                    array('url' => $url)
+                )) {
+                    file_put_contents($documentName, $document);
+                }                
+            } else {
+                ;
             }
 
-            file_put_contents('documents/' . md5($url), $document);
-            $links = $this->container['LinkExtractor']->extractLinks($url, $document);
-            foreach ($links as $link) {
-                array_push($this->queue, $link);
-            }
+            $links = $this->container['LinkExtractor']->extractLinks($document);
+            $this->batchEnque($links);
         }
+    }
+
+    protected function batchEnque($targets) {
+        foreach ($targets as $target) {
+            $this->enque($target);
+        }
+    }
+
+    protected function enque($target) {
+        if ($this->container['UrlMapSetDAO']->insert(array(
+            'url' => $target,
+            'create_time' => time(),
+            'update_time' => time(),
+        ))) {
+            array_push($this->queue, $target);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected function deque() {
+        return array_shift($this->queue) ?: false;
     }
 }
