@@ -7,5 +7,11 @@ $c['UrlMapSetDAO'] = function ($c) {
 };
 
 $c['Kernel']->crawl(array(
-    'baidu.com',
+    'http://www.hdu.edu.cn/',
 ));
+
+// $res = $c['HttpRequester']->doGetRequest('edusoho.com');
+
+// file_put_contents('tmp.html', $res);
+
+// var_dump(($c['LinkExtractor'])->extractLinks('edusoho.com', $res));

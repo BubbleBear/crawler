@@ -22,7 +22,7 @@ abstract class BaseDAO
 
     public function delete($conditions)
     {
-        $sql = 'DELETE FROM ' . $this->table . (empty($container) ? '' : ' WHERE ' . implode(' = ? AND ', array_keys($conditions)) . ' = ?');
+        $sql = 'DELETE FROM ' . $this->table . (empty($conditions) ? '' : ' WHERE ' . implode(' = ? AND ', array_keys($conditions)) . ' = ?');
 
         return $this->conn->exec($sql, array_values($conditions))->rowCount();
     }

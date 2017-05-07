@@ -15,9 +15,13 @@ class Kernel
 
     public function crawl(array $seeds)
     {
+        $this->container['UrlMapSetDAO']->delete(array());
+
         $this->batchEnque($seeds);
 
         while ($url = $this->deque()) {
+            var_dump($url);
+            
             $document = $this->container['HttpRequester']->doGetRequest($url);
 
             if (!empty($document)) {
@@ -29,13 +33,15 @@ class Kernel
                     ),
                     array('url' => $url)
                 )) {
-                    file_put_contents($documentName, $document);
-                }                
+                    file_put_contents('documents/' . $documentName, $document);
+                } else {
+                    var_dump('a');
+                }
             } else {
-                ;
+                var_dump('b');
             }
 
-            $links = $this->container['LinkExtractor']->extractLinks($document);
+            $links = $this->container['LinkExtractor']->extractLinks($url, $document);
             $this->batchEnque($links);
         }
     }

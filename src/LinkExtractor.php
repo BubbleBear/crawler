@@ -12,7 +12,8 @@ class LinkExtractor
     {
         $this->context = $context;
 
-        $pattern = '/"([a-z]+:\/)?\/[\w\.\/]+"/';
+        $pattern = '/"((https?|ftp):\/\/)?(([^\.][\w\._]+\.[a-zA-Z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{1,4})?)?(\/[\w\&%\.\/-~]*)?"|
+                    \'((https?|ftp):\/\/)?(([^\.][\w\._]+\.[a-zA-Z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{1,4})?)?(\/[\w\&%\.\/-~]*)?\'/';
 
         $tmp = array();
 
@@ -21,7 +22,7 @@ class LinkExtractor
         $this->links = array_unique($tmp[0]);
 
         foreach ($this->links as &$link) {
-            $link = trim($link, '"');
+            $link = trim($link, '"\'');
         }
 
         $this->derelativeLinks($url);
@@ -32,7 +33,7 @@ class LinkExtractor
     protected function derelativeLinks($url)
     {
         $matches = array();
-        preg_match('/([a-z]+:\/\/)?[\w\.]+\/?/', $url, $matches);
+        preg_match('/[\w-\.]+\/?/', $url, $matches);
         $baseUrl = $matches[0];
 
         foreach ($this->links as &$link) {

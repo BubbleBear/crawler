@@ -47,7 +47,6 @@ class HttpRequester
         
         $this->opts[CURLOPT_HEADER] = true;
         $this->opts[CURLOPT_RETURNTRANSFER] = true;
-        $this->opts[CURLOPT_CONNECTTIMEOUT] = 10;
         $this->opts[CURLOPT_SSL_VERIFYPEER] = false;
         $this->opts[CURLOPT_FOLLOWLOCATION] = true;
         $this->opts[CURLOPT_AUTOREFERER] = true;
@@ -55,6 +54,9 @@ class HttpRequester
         // kill slow http connections
         $this->opts[CURLOPT_LOW_SPEED_LIMIT] = 10 * 1024;
         $this->opts[CURLOPT_LOW_SPEED_TIME] = 5;
+
+        $this->opts[CURLOPT_CONNECTTIMEOUT] = 10;
+        $this->opts[CURLOPT_TIMEOUT] = 30;
 
         curl_setopt_array($this->ch, $this->opts);
     }
