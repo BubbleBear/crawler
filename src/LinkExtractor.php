@@ -35,8 +35,8 @@ class LinkExtractor
     protected function purifyLinks()
     {
         foreach ($this->links as &$link) {
-            $link = ltrim(substr($link, strpos($link, '=', strpos($link, 'href')) + 1), '\t\r\n \'\"\x0c');
-            $link = rtrim(substr($link, 0, strpos($link, '"')), '\t\r\n \'\"\x0c');
+            $link = ltrim(substr($link, strpos($link, '=', strpos($link, 'href')) + 1));
+            $link = rtrim(substr($link, 1, strpos(substr($link, 1), $link[0])), " \t\n\r\0\x0B\'\"");
         }
 
         $this->links = array_unique($this->links);
@@ -44,29 +44,35 @@ class LinkExtractor
 
     protected function derelativeLinks($url)
     {
-        $matches = array();
-        preg_match('/.+:\/\/.+/', $url, $matches);
-        var_dump($matches);
-        return;
-        $baseUrl = $matches[0];
+        $rel = preg_grep('/^(?!(\w*:?\/\/|\w+:))/', $this->links);
 
-        foreach ($this->links as &$link) {
-            if (!strpos($link, '://')) {
-                $link = rtrim($baseUrl, '/') . $link;
+        $this->links = array_diff($this->links, $rel);
+
+        foreach ($rel as &$link) {
+            if ($link[0] == '/') {
+                $link = $this->getPrefix($url, 1) . $link;
+            } elseif ($link[0] == '.') {
+                $link = $this->getPrefix($url, 0 - substr_count($link, '../')) . trim($link, './');
+            } else {
+                $link = $this->getPrefix($url, 0) . '/' . $link;
             }
         }
+
+        $this->links = array_merge($this->links, $rel);
     }
 
-    protected function getRootUrl($url)
+    protected function getPrefix($url, $len = 0)
     {
-        if ($pos = strpos($url, '//') !== false) {
+        if (($pos = strpos($url, '//')) !== false) {
             $url = substr($url, $pos + strlen('//'));
         }
 
-        if ($pos = strpos($url, '/') !== false) {
-            return substr($url, 0, $pos);
-        } else {
-            return $url;
+        $seg = explode('/', $url);
+
+        if ($len <= 0) {
+            $len += count($seg);
         }
+
+        return implode('/', array_slice($seg, 0, $len));
     }
 }
