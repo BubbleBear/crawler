@@ -41,6 +41,8 @@ class Kernel
                 var_dump('b');
             }
 
+            var_dump('c');
+
             $links = $this->container['LinkExtractor']->extractLinks($url, $document);
             $this->batchEnque($links);
         }
