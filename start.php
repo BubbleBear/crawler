@@ -7,7 +7,5 @@ $c['UrlMapSetDAO'] = function ($c) {
 };
 
 $c['Kernel']->crawl(array(
-    'http://www.hdu.edu.cn/',
+    'http://www.jd.com/',
 ));
-
-// exec('.\bin\phantomjs src\Scripts\test.js');

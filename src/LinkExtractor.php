@@ -39,6 +39,10 @@ class LinkExtractor
             $link = rtrim(substr($link, 1, strpos(substr($link, 1), $link[0])), " \t\n\r\0\x0B\'\"");
         }
 
+        $this->links = array_filter($this->links, function ($link) {
+            return !empty($link);
+        });
+
         $this->links = array_unique($this->links);
     }
 
