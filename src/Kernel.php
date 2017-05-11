@@ -45,7 +45,7 @@ class Kernel
                     array('url' => $url)
                 );
 
-                file_put_contents('documents/' . $documentName, $document);
+                file_put_contents("documents/ ". $documentName, $document);
             } catch (\Exception $e) {
                 ;
             }

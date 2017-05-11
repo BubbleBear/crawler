@@ -1,10 +1,6 @@
 <?php
 
-$c = include 'bootstrap.php';
-
-$c['UrlMapSetDAO'] = function ($c) {
-    return new \Vatel\DAO\UrlMapSetDAO($c);
-};
+$c = include phpversion(){0} == 7 ? 'bootstrap.php' : 'old_bootstrap.php';
 
 $c['Kernel']->crawl(array(
     'http://www.jd.com/',

@@ -1,8 +1,8 @@
 "use strict";
 
-var page = require('webpage').create();
-var system = require('system');
-var args = system.args;
+var page = require('webpage').create(),
+    system = require('system'),
+    args = system.args;
 
 if (args.length === 1) {
     console.log('no url provided!');
