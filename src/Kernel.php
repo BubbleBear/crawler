@@ -11,7 +11,8 @@ class Kernel
     public function __construct($container)
     {
         $this->container = $container;
-        $this->container['UrlMapSetDAO']->delete(array());
+
+        !isset($this->container['DEV']) or $this->container['UrlMapSetDAO']->delete(array());
     }
 
     public function crawl(array $seeds)
@@ -21,9 +22,7 @@ class Kernel
         while ($url = $this->deque()) {
             var_dump($url);
 
-            $cmd = "\"bin/phantomjs\" src/Scripts/automation.js {$url}";
-            
-            $document = `$cmd`;
+            $document = $this->container['LegacyFetcher']->fetch($url);
 
             $this->archiveDocument($document, $url);
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Vatel;
+namespace Vatel\Fetcher;
 
-class HttpRequester
+class LegacyFetcher
 {
     private $ch;
     
@@ -15,7 +15,7 @@ class HttpRequester
         $this->boot();
     }
 
-    public function doGetRequest($url, $referer = '')
+    public function fetch($url, $referer = '')
     {
         $url = $this->normalizeUrl($url);
 
@@ -25,11 +25,6 @@ class HttpRequester
         return $this->partReturnHeader($res);
     }
     
-    public function doPostRequest()
-    {
-        ;
-    }
-
     public function setUpHeaders(array $params = array())
     {
         $httpheader = array(

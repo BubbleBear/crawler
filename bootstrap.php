@@ -10,7 +10,7 @@ return new class implements \ArrayAccess
 
     public function __construct()
     {
-        @dir('documents') or mkdir('documents');
+        dir('documents') or mkdir('documents');
 
         $this->container = new Pimple\Container();
         $this->container['config'] = include 'config.php';
