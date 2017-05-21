@@ -7,7 +7,8 @@
     <link rel="icon" href="//www.jd.com/favicon.ico"/>
     <link type="text/css" rel="stylesheet"
           href="//misc.360buyimg.com/user/passport/1.0.0/??/widget/base/base.css,widget/common-2016-1124/common-2016-1124.css,/widget/login-form-2016-1124/login-form-2016-1124.css,/widget/login-banner/login-banner.css,/widget/safe-step/safe-step.css,widget/foreign-number-layer-1130/foreign-number-layer-1130.css"
-          source="widget"/>  
+          source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/user/passport/1.0.0/css/tinyscrollbar.css"></link>
     <script type="text/javascript" src="//misc.360buyimg.com/jdf/lib/jquery-1.6.4.js"></script>
 	<script type="text/javascript">
      	$(function(){
@@ -47,14 +48,14 @@
                     <div class="mc">
                         <div class="form">
                             <form id="formlogin" method="post" onsubmit="return false;">
-                                <input type="hidden" id="sa_token" name="sa_token" value="B68C442BE645754F33277E70120805905E88F11B17C0C5B96C2EE9A9393C192FBC596B9541FCB498516597D597CCBD748CB0C366A5F340FB7FD38B77A239043A9EAC1A051315BF4E3C4D071F5012A9C2C6BB4F7831C190A67E0EFD6941FC5D62FDEBC3C995B8418ABCE557C28B58D955C20ECEA50DD6A8DB07BC0CA1EAB4340A14F69A21BAB849C22680B7E766D5590E9069EF49CB2AA83F8A00321C33628BD5393063F6A1D4F689CBDB792A46C0E2A70F0BEC597AAD8ACD477BB49FF490A31139A68AA22967A147660B4D5D7FCC891EF80A4A1B9B0DFE92FF8673F5653C17FB5C07887C75ED6CFAC6662124FC74C17DAC18C3C4423B1283DB58D53D062A925B29E4D264D6D12178F5A77E73AF118D6CFFDD5BA47B874CDA65CBD01C93B4E5C33E95C1D801ED2B1CCDBF6702436F563E38BF515FBEA22EFC333D62F480095F8D15354CB48F3A54B16113A7DD05AC4717430A749D151C01F58483E5FEF92720FDFC1EE86431FF86D9D914843EDFABADF7C478D9A16FB7B4709FF99627D35E702211F227382842C26C8B2086B57AD820963D9DC845992E020951C4FCE3F012C9DC5A314680B760672EE2EBA2B04A36C7C91A91F51C3142668CA39493955884E4CF6E4E0DB23B083D43D196AACAA21E65D59951045ACCDCD9340092F35037EB654F84D36F055190CBF74039A869E11E9EC4"/>
-								<input type="hidden" id="uuid" name="uuid" value="577ed7df-1e0e-43d7-9789-88bf4d6dde6f"/>
+                                <input type="hidden" id="sa_token" name="sa_token" value="B68C442BE645754F33277E70120805905E88F11B17C0C5B96C2EE9A9393C192FBC596B9541FCB498516597D597CCBD748CB0C366A5F340FB7FD38B77A239043A9EAC1A051315BF4E3C4D071F5012A9C2C6BB4F7831C190A67E0EFD6941FC5D62FDEBC3C995B8418ABCE557C28B58D955C20ECEA50DD6A8DB07BC0CA1EAB4340A14F69A21BAB849C22680B7E766D5590E9069EF49CB2AA83F8A00321C33628BD5393063F6A1D4F689CBDB792A46C0E2A70F0BEC597AAD8ACD477BB49FF490A31139A68AA22967A147660B4D5D7FCC891EF80A4A1B9B0DFE92FF8673F5653C17FB83F7FAE36BB3749B332659CF01094BD004557DA6C2DBECB179597787A0397CE583CEF5D0B6504855684AE39B5F03AC834EB0EEBCC7CD24D667DEFC9F515F6E3B5D270402B9FBAE50B5612809986455C7BCA182835FF49C1491FD9CA095FA0DECCC9CDBB929D7638DA5869D09B09C75AB8F03AD2DF858028AB3048896A052FC020988C443C35619DEEA9E37B24C810D98EEE04B77AEFBFD8A5A5C25DCDD43A25AF2439033D7738CDCBE50E61C1D91247F7D3AFF23B94F0A9B4AAFDA9E0DD440244A6E92BDD54D3CB25016E9CFAD4B7DFB524DA31E839C3ACC95DEB1F66A7AAF77DBFDEEEC5A2F2C485EA8826CA914D89D9D2594ACB0BDD939F7F9F530ED123DF95C2AC72F5E1283854C065BEDE48E4AFE"/>
+								<input type="hidden" id="uuid" name="uuid" value="8dd3fb62-e480-4492-8602-ab8dddf2c497"/>
                                 <input type="hidden" name="eid" id="eid" value="" class="hide"/>
                                 <input type="hidden" name="fp" id="sessionId" value="" class="hide"/>
-                                <input type="hidden" name="_t" id="token" value="_ntbPUKU" class="hide"/>
+                                <input type="hidden" name="_t" id="token" value="_ntHtAwz" class="hide"/>
                                 <input type="hidden" name="loginType" id="loginType" value="c" class="hide"/>
                                 <input type="hidden" name="pubKey" id="pubKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB" class="hide"/>
-                                                                <input type="hidden" name="GblnnudJvL" value="HrpEE"/>
+                                                                <input type="hidden" name="NrmXaxJHvD" value="KezNj"/>
                                                                 <div class="item item-fore1">
                                     <label for="loginname" class="login-label name-label"></label>
                                     <input id="loginname" type="text" class="itxt" name="loginname" tabindex="1"
@@ -77,8 +78,8 @@
                                      class="item item-vcode item-fore3  hide ">
                                     <input id="authcode" type="text" class="itxt itxt02" name="authcode" tabindex="3">
                                     <img id="JD_Verification1" class="verify-code"
-                                                                                  src2="//authcode.jd.com/verify/image?a=1&amp;acid=577ed7df-1e0e-43d7-9789-88bf4d6dde6f&amp;uid=577ed7df-1e0e-43d7-9789-88bf4d6dde6f"
-                                                                                      onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?a=1&amp;acid=577ed7df-1e0e-43d7-9789-88bf4d6dde6f&amp;uid=577ed7df-1e0e-43d7-9789-88bf4d6dde6f&amp;yys='+new Date().getTime();$('#authcode').val('');"/>
+                                                                                  src2="//authcode.jd.com/verify/image?a=1&amp;acid=8dd3fb62-e480-4492-8602-ab8dddf2c497&amp;uid=8dd3fb62-e480-4492-8602-ab8dddf2c497"
+                                                                                      onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?a=1&amp;acid=8dd3fb62-e480-4492-8602-ab8dddf2c497&amp;uid=8dd3fb62-e480-4492-8602-ab8dddf2c497&amp;yys='+new Date().getTime();$('#authcode').val('');"/>
                                     <a href="javascript:void(0)" onclick="$('#JD_Verification1').click();">看不清换一张</a>
                                 </div>
 								
@@ -114,7 +115,7 @@
                         </div>
                         <div class="qrcode-main">
                             <div class="qrcode-img">
-                                <img src="//qr.m.jd.com/show?appid=133&size=147&t=1494873919333" alt="">
+                                <img src="//qr.m.jd.com/show?appid=133&size=147&t=1495371294756" alt="">
                             </div>
                             <div class="qrcode-help" style="display: none; "></div>
                         </div>
@@ -228,7 +229,7 @@
 <script type="text/javascript" src="/new/misc/js/login2016.js?v=201702221137"></script>
 <script type="text/javascript" src="//misc.360buyimg.com/user/passport/1.0.0/js/login.index.2016-1130.js" source="widget"></script>
 
-<script type="text/javascript">	~function () {		var data = [						{			  src:"//img30.360buyimg.com/da/jfs/t5416/157/1875757489/193556/ae33fd5c/591572cdN1c7cb59e.jpg",			  bgColor:"#f01243",                          weight: ""			}						,			{			  src:"//img11.360buyimg.com/da/jfs/t5224/168/1745912443/139814/d9e6bf1a/5913f924N4b49b83c.jpg",			  bgColor:"#ffbc00",                          weight: ""			}						,			{			  src:"//img20.360buyimg.com/da/jfs/t5221/72/1885925655/113553/3f278bc9/591551ffN8b116836.jpg",			  bgColor:"#DCDCDC",                          weight: ""			}						,			{			  src:"//img13.360buyimg.com/da/jfs/t4492/42/4512465079/19017/ddcb8d1d/5912bebfNf2b6390c.jpg",			  bgColor:"#A1E9E5",                          weight: ""			}						,			{			  src:"//img13.360buyimg.com/da/jfs/t2749/276/1020747574/33213/870500f1/5731485aN1134b4f0.png",			  bgColor:"#e93854",                          weight: "4"			}						,			{			  src:"//img20.360buyimg.com/da/jfs/t5209/113/2261294778/131769/d7fc6ca2/59194cfbNdf1f2c5c.jpg",			  bgColor:"#be1355",                          weight: "4"			}			];						         var getRandom = function (arr) {			var _temp = 0, _random = 0, _weight, _newArr = [];						for (var i = 0; i < arr.length; i++) {				_weight = parseInt(arr[i].weight) ? parseInt(arr[i].weight) : 1;				_newArr[i] = [];				_newArr[i].push(_temp);				_temp += _weight;				_newArr[i].push(_temp);			}						_random = Math.ceil(_temp * Math.random());						for (var i = 0; i< _newArr.length; i++){				if(_random > _newArr[i][0] && _random <= _newArr[i][1]){					return arr[i];				}			}			};				var tpl = '<div class="login-banner" style="background-color: {bgColor}">\		              <div class="w">\			         <div id="banner-bg"  clstag="pageclick|keycount|20150112ABD|46" class="i-inner" style="background: url({imgURI}) 0px 0px no-repeat;background-color: {bgColor}"></div>\		              </div>\		           </div>';							var bgData = getRandom(data);		var bannerHtml = tpl.replace(/{bgColor}/g, bgData.bgColor).replace(/{imgURI}/g, bgData.src);				$('.login-banner').replaceWith(bannerHtml);	}();</script>
+<script type="text/javascript">	~function () {		var data = [						{			  src:"//img30.360buyimg.com/da/jfs/t5416/157/1875757489/193556/ae33fd5c/591572cdN1c7cb59e.jpg",			  bgColor:"#f01243",                          weight: ""			}						,			{			  src:"//img13.360buyimg.com/da/jfs/t5821/30/317417331/140704/a5843d62/591eb019N375b55eb.jpg",			  bgColor:"#1da2ff",                          weight: "4"			}						,			{			  src:"//img10.360buyimg.com/da/jfs/t5350/294/2448541173/113553/3f278bc9/591a6ec0Na8c0d147.jpg",			  bgColor:"#DCDCDC",                          weight: ""			}			];						         var getRandom = function (arr) {			var _temp = 0, _random = 0, _weight, _newArr = [];						for (var i = 0; i < arr.length; i++) {				_weight = parseInt(arr[i].weight) ? parseInt(arr[i].weight) : 1;				_newArr[i] = [];				_newArr[i].push(_temp);				_temp += _weight;				_newArr[i].push(_temp);			}						_random = Math.ceil(_temp * Math.random());						for (var i = 0; i< _newArr.length; i++){				if(_random > _newArr[i][0] && _random <= _newArr[i][1]){					return arr[i];				}			}			};				var tpl = '<div class="login-banner" style="background-color: {bgColor}">\		              <div class="w">\			         <div id="banner-bg"  clstag="pageclick|keycount|20150112ABD|46" class="i-inner" style="background: url({imgURI}) 0px 0px no-repeat;background-color: {bgColor}"></div>\		              </div>\		           </div>';							var bgData = getRandom(data);		var bannerHtml = tpl.replace(/{bgColor}/g, bgData.bgColor).replace(/{imgURI}/g, bgData.src);				$('.login-banner').replaceWith(bannerHtml);	}();</script>
 <script type="text/javascript">
     (function () {
         var ja = document.createElement('script');

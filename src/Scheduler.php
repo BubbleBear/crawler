@@ -2,7 +2,7 @@
 
 namespace Vatel;
 
-class Kernel
+class Scheduler
 {
     private $container;
 

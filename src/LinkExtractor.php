@@ -6,17 +6,23 @@ class LinkExtractor
 {
     private $context;
 
+    private $url;
+
     private $links = array();
 
     public function extractLinks($url, $context)
     {
         $this->context = $context;
 
+        $this->url = $url;
+
         $this->getTaggedLinks();
 
         $this->purifyLinks();
 
-        $this->derelativeLinks($url);
+        $this->derelativeLinks();
+
+        $this->normalizeLinks();
 
         return $this->links;
     }
@@ -46,7 +52,7 @@ class LinkExtractor
         $this->links = array_unique($this->links);
     }
 
-    protected function derelativeLinks($url)
+    protected function derelativeLinks()
     {
         $rel = preg_grep('/^(?!(\w*:?\/\/|\w+:))/', $this->links);
 
@@ -54,29 +60,44 @@ class LinkExtractor
 
         foreach ($rel as &$link) {
             if ($link[0] == '/') {
-                $link = $this->getPrefix($url, 1) . $link;
+                $link = $this->getRoot(1) . $link;
             } elseif ($link[0] == '.') {
-                $link = $this->getPrefix($url, 0 - substr_count($link, '../')) . trim($link, './');
+                $link = $this->getRoot(0 - substr_count($link, '../')) . trim($link, './');
             } else {
-                $link = $this->getPrefix($url, 0) . '/' . $link;
+                $link = $this->getRoot(0) . '/' . $link;
             }
         }
 
         $this->links = array_merge($this->links, $rel);
     }
 
-    protected function getPrefix($url, $len = 0)
+    protected function getRoot($len = 0)
     {
-        if (($pos = strpos($url, '//')) !== false) {
-            $url = substr($url, $pos + strlen('//'));
+        if (($pos = strpos($this->url, '//')) !== false) {
+            $this->url = substr($this->url, $pos + 2);
         }
 
-        $seg = explode('/', $url);
+        $seg = explode('/', $this->url);
 
         if ($len <= 0) {
             $len += count($seg);
         }
 
         return implode('/', array_slice($seg, 0, $len));
+    }
+
+    protected function normalizeLinks()
+    {
+        foreach ($this->links as $key => &$link) {
+            if (($pos = strpos($link, 'javascript:')) === 0) {
+                array_splice($this->links, $key, 1);
+            } elseif (($pos = strpos($link, '//')) === 0) {
+                $link = 'http:' . $link;
+            } elseif ($pos === 1) {
+                $link = 'http' . $link;
+            } elseif ($pos === false) {
+                $link = 'http://' . $link;
+            }
+        }
     }
 }
