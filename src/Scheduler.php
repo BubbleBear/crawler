@@ -22,7 +22,7 @@ class Scheduler
         while ($url = $this->deque()) {
             var_dump($url);
 
-            $document = $this->container['LegacyFetcher']->fetch($url);
+            $document = $this->container['DynamicFetcher']->fetch($url);
 
             $this->archiveDocument($document, $url);
 

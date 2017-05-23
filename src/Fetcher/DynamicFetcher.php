@@ -9,9 +9,9 @@ class DynamicFetcher
         ;
     }
 
-    public function fetch($url, $referer = '')
+    public function fetch($url, $waitTime = 2000, $referer = '')
     {
-        $cmd = "\"bin/phantomjs\" src/Scripts/automation.js {$url}";
+        $cmd = "\"bin/phantomjs\" \"src/Scripts/automation.js\" \"{$url}\" \"{$waitTime}\"";
             
         return `$cmd`;
     }
