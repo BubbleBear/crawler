@@ -15,6 +15,10 @@ if (args.length === 1) {
         }
     };
 
+    setTimeout(function () {
+        phantom.exit();
+    }, 30000)
+
     page.open(args[1], function (status) {
         var height = page.evaluate(function () {
             return document.height;
